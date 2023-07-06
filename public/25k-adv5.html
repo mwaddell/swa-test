@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="markerclusterer.min.js"></script>
+    <script src="25k.js"></script>
+    <script>
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 5,
+          center: { lat: 41.9, lng: -87.6 },
+          mapId: "DEMO_MAP_ID",
+        });
+
+        const markers = addressPoints.map((a) => {
+          return new google.maps.marker.AdvancedMarkerElement({
+            position: { lat: a[0], lng: a[1] },
+            title: a[2],
+            map,
+          });
+        });
+
+        new markerClusterer.MarkerClusterer({ map, markers });
+      }
+    </script>
+    <style>
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; }
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&libraries=marker&v=beta" async></script>
+  </body>
+</html>
