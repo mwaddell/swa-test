@@ -8,12 +8,14 @@
         const map = new google.maps.Map(document.getElementById("map"), {
           zoom: 10,
           center: { lat: 41.9, lng: -87.6 },
+          mapId: "DEMO_MAP_ID",
         });
 
         const markers = addressPoints.map((a) => {
-          return new google.maps.AdvancedMarker({
+          return new google.maps.marker.AdvancedMarkerElement({
             position: { lat: a[0], lng: a[1] },
             title: a[2],
+            map,
           });
         });
 
@@ -21,26 +23,14 @@
       }
     </script>
     <style>
-      #map {
-        height: 100%;
-      }
-
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; }
     </style>
   </head>
 
   <body>
     <div id="map"></div>
 
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-      async
-    ></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async></script>
   </body>
 </html>
