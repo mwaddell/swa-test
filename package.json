@@ -1,0 +1,17 @@
+{
+  "name": "swa-test",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "echo \"Done\"",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwaddell/swa-test.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "prettier": "^3.0.0"
+  }
+}
