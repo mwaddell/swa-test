@@ -17,7 +17,7 @@
           });
         });
 
-        const algorithm = new markerClusterer.SuperClusterViewportAlgorithm();
+          const algorithm = new markerClusterer.SuperClusterViewportAlgorithm({ maxZoom: 15 });
 
         new markerClusterer.MarkerClusterer({ map, markers, algorithm });
       }
