@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="markerclusterer.min.js"></script>
+    <script src="25k.js"></script>
+    <script>
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 10,
+          center: { lat: 41.9, lng: -87.6 },
+        });
+
+        const markers = addressPoints.map((a) => {
+          return new google.maps.Marker({
+            position: { lat: a[0], lng: a[1] },
+            label: a[2],
+          });
+        });
+
+        const algorithm = new markerClusterer.SuperClusterViewportAlgorithm();
+
+        new markerClusterer.MarkerClusterer({ map, markers, algorithm });
+      }
+    </script>
+    <style>
+      #map {
+        height: 100%;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+      async
+    ></script>
+  </body>
+</html>
